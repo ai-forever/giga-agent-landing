@@ -1,10 +1,11 @@
+import { Box, Cloud, Github, Server } from "lucide-react";
 import { DemoChat } from "./components/giga-demo/DemoChat";
 import { getTraceThreads } from "./components/giga-demo/utils";
 
 const features = [
   ["01", "Исследования с источниками", "Агент планирует поиск, читает материалы, проверяет выводы и собирает отчет с цитатами."],
-  ["02", "Код рядом с диалогом", "Python, shell и notebook-подход для анализа данных, генерации артефактов и проверки гипотез."],
-  ["03", "Внутренние знания", "RAG-коллекции, embeddings, Qdrant и ответы, которые можно привязать к документам команды."],
+  ["02", "Выполнение задач через код", "Python, shell и notebook-подход для анализа данных, генерации артефактов и проверки гипотез."],
+  ["03", "Внутренние знания", "Аггрегируйте знания команды в коллекции документов, дополняйте запросы коллекциями через RAG"],
   ["04", "Инструменты и MCP", "Подключайте GitHub, браузер, API и собственные сервисы через контролируемый tool calling."],
   ["05", "Проекты и треды", "Контекст задач, файлы, история решений и ветвление диалогов остаются в рабочем пространстве."],
   ["06", "Навыки команды", "Skills превращают повторяемые процессы в инструкции, которые агент применяет стабильно."],
@@ -25,9 +26,9 @@ const deployItems = [
 ];
 
 const proofItems = [
-  ["Agent workspace", "UI, файлы, треды и инструменты собраны в одном месте."],
-  ["Traceable runs", "Видно, что агент сделал, какие инструменты вызвал и где получил результат."],
-  ["Production control", "Модели, провайдеры и политики доступа настраиваются под вашу инфраструктуру."],
+  ["Агентные возможности", "Исполнение кода в sandbox, MCP, Skills, плагины, RAG, память"],
+  ["Настраиваемые пространства", "Организации, группы пользователей, дополнительные каналы"],
+  ["Независимость", "Решение под лицензией MIT - разворачивайте на собственных серверах, конфигурируйте под нужды своей организации"],
 ];
 
 export default function App() {
@@ -46,6 +47,7 @@ export default function App() {
           <a href="#contact">Запуск</a>
         </nav>
         <a className="header-link" href="https://github.com/ai-forever/giga_agent">
+          <Github aria-hidden="true" size={18} strokeWidth={2.2} />
           GitHub
         </a>
       </header>
@@ -53,29 +55,26 @@ export default function App() {
       <main id="top">
         <section className="hero section-band">
           <div className="hero-copy">
-            <p className="eyebrow">Self-hosted agent workspace</p>
-            <h1>Агентная среда, которую можно держать рядом с кодом, данными и правилами команды.</h1>
+            <p className="eyebrow">Сделано в GigaChain</p>
+            <h1>
+              <span className="hero-brand-gradient">GigaAgent</span> - универсальный агент для вашего бизнеса
+            </h1>
             <div className="hero-meta">
               <p className="hero-lead">
-                GigaAgent объединяет чат, проекты, файлы, sandbox execution, RAG и tool calling в
-                одном темном рабочем интерфейсе. Команда получает не витринного ассистента, а
-                управляемый runtime для реальных задач.
+                Настройте агента сразу для всех работников своей организации. Подойдет для работы с
+                документами, аналитики данных, исследований, создания прототипов и личных нужд
               </p>
               <div className="hero-actions" aria-label="Основные действия">
                 <a className="button primary" href="https://trashchenkov.github.io/giga_agent/">
-                  Смотреть документацию
+                  Документация
                 </a>
                 <a className="button secondary" href="#core">
-                  Изучить возможности
+                  Возможности
                 </a>
                 <a className="button tertiary" href="https://github.com/ai-forever/giga_agent">
-                  GitHub
+                  <Github aria-hidden="true" size={18} strokeWidth={2.2} />
+                  Репозиторий
                 </a>
-              </div>
-              <div className="hero-facts" aria-label="Ключевые факты">
-                <span>Docker ready</span>
-                <span>RAG + tools</span>
-                <span>Sandboxed code</span>
               </div>
             </div>
           </div>
@@ -101,29 +100,10 @@ export default function App() {
           </div>
         </section>
 
-        <section className="section-band intro-band">
-          <div className="section-heading">
-            <p className="eyebrow">Новый слой работы</p>
-            <h2>GigaAgent закрывает разрыв между LLM-чатом и production-процессом.</h2>
-          </div>
-          <div className="intro-grid">
-            <p>
-              Вместо разрозненных промптов и ручных копипаст агент получает доступ к документам,
-              инструментам и sandbox, а команда видит ход работы и может управлять границами
-              автономности.
-            </p>
-            <p>
-              Платформа подходит для исследовательских отчетов, анализа данных, внутренних
-              knowledge-base сценариев, coding workflow и интеграций, где важны безопасность и
-              воспроизводимость.
-            </p>
-          </div>
-        </section>
-
         <section className="section-band" id="core">
           <div className="section-heading">
             <p className="eyebrow">Возможности</p>
-            <h2>Все, что нужно агенту, находится в одном управляемом workspace.</h2>
+            <h2>Все, что нужно агенту, находится в одном конфигурируемом рабочем пространстве.</h2>
           </div>
           <div className="feature-grid">
             {features.map(([kicker, title, text]) => (
@@ -153,7 +133,7 @@ export default function App() {
             <article className="model-note">
               <h3>Один интерфейс, разные backend-стратегии.</h3>
               <p>
-                Можно сочетать managed API, open-weight модели и локальные endpoints, не меняя
+                Можно сочетать корпоративный API, глобальные и локальные модели, не меняя
                 пользовательский сценарий и агентные инструкции.
               </p>
             </article>
@@ -178,14 +158,76 @@ export default function App() {
         <section className="section-band changelog-band" id="contact">
           <div className="section-heading">
             <p className="eyebrow">Запуск</p>
-            <h2>Начните с локального окружения, затем подключайте модели, документы и tools.</h2>
+            <h2>Выбирайте удобный для вас способ развертывания.</h2>
           </div>
           <div className="launch-panel">
-            <code>docker compose up</code>
-            <p>
-              Документация и исходный код открыты, поэтому можно быстро поднять демо, проверить
-              агентные сценарии и адаптировать workspace под процессы команды.
-            </p>
+            <div className="launch-commands" aria-label="Команды запуска">
+              <div className="launch-tabs">
+                <input id="launch-tab-python" name="launch-tab" type="radio" defaultChecked />
+                <input id="launch-tab-compose" name="launch-tab" type="radio" />
+                <div className="launch-tab-list" role="tablist" aria-label="Способ запуска">
+                  <label htmlFor="launch-tab-python">python package</label>
+                  <label htmlFor="launch-tab-compose">compose app</label>
+                </div>
+                <div className="launch-tab-panels">
+                  <div className="launch-tab-panel panel-python terminal-window">
+                    <div className="terminal-bar" aria-hidden="true">
+                      <span />
+                      <span />
+                      <span />
+                    </div>
+                    <code>
+                      <span className="terminal-prompt">$</span>
+                      <span className="terminal-typing command-add">uv add giga_agent</span>
+                    </code>
+                    <code>
+                      <span className="terminal-prompt">$</span>
+                      <span className="terminal-typing command-dev">uv run giga_agent dev</span>
+                    </code>
+                  </div>
+                  <div className="launch-tab-panel panel-compose terminal-window">
+                    <div className="terminal-bar" aria-hidden="true">
+                      <span />
+                      <span />
+                      <span />
+                    </div>
+                    <code>
+                      <span className="terminal-prompt">$</span>
+                      <span className="terminal-typing command-build">make build</span>
+                    </code>
+                    <code>
+                      <span className="terminal-prompt">$</span>
+                      <span className="terminal-typing command-up">make up</span>
+                    </code>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="launch-copy">
+              <h3>Готовые платформы</h3>
+              <p>
+                Запускайте локально через uv или разворачивайте self-hosted сборку через контейнерные
+                registry для команды.
+              </p>
+              <div className="launch-links" aria-label="Варианты запуска и контейнеры">
+                <a className="launch-link digitalocean" href="https://cloud.digitalocean.com/apps/new?repo=https://github.com/ai-forever/giga_agent/tree/main">
+                  <Cloud aria-hidden="true" size={16} strokeWidth={2.2} />
+                  DigitalOcean
+                </a>
+                <a className="launch-link cloudru" href="https://cloud.ru/ru/docs/artifact-registry">
+                  <Server aria-hidden="true" size={16} strokeWidth={2.2} />
+                  Cloud.ru Artifact Registry
+                </a>
+                <a className="launch-link ghcr" href="https://github.com/ai-forever/giga_agent/pkgs/container/giga_agent">
+                  <Github aria-hidden="true" size={16} strokeWidth={2.2} />
+                  GHCR
+                </a>
+                <a className="launch-link dockerhub" href="https://hub.docker.com/r/gigateam/giga_agent">
+                  <Box aria-hidden="true" size={16} strokeWidth={2.2} />
+                  Docker Hub
+                </a>
+              </div>
+            </div>
           </div>
         </section>
       </main>
@@ -195,8 +237,6 @@ export default function App() {
         <div className="footer-links">
           <a href="https://trashchenkov.github.io/giga_agent/">Документация</a>
           <a href="https://github.com/ai-forever/giga_agent">GitHub</a>
-          <span>Docker Hub: gigateam/giga_agent</span>
-          <span>GHCR: ghcr.io/ai-forever/giga_agent</span>
         </div>
       </footer>
     </>
