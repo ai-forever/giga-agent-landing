@@ -214,13 +214,13 @@ export default function App() {
                   <Cloud aria-hidden="true" size={16} strokeWidth={2.2} />
                   DigitalOcean
                 </a>
-                <a className="launch-link cloudru" href="https://cloud.ru/ru/docs/artifact-registry">
+                <a className="launch-link cloudru" href="https://console.cloud.ru/spa/container-registry/registries/2fd2e56a-83fc-4637-92f0-a8ede675fe13/docker/docker/repositories/958eae74-1d46-40f9-98c9-0f89e44a2f2a/artifacts?registryName=gigateam&repositoryName=giga_agent&customerId=f111fa1b-949f-4cc6-9fcc-d32192d6d0e2&projectId=cfded91d-fe73-4b84-a247-3f5427e18cea">
                   <Server aria-hidden="true" size={16} strokeWidth={2.2} />
                   Cloud.ru Artifact Registry
                 </a>
                 <a className="launch-link ghcr" href="https://github.com/ai-forever/giga_agent/pkgs/container/giga_agent">
                   <Github aria-hidden="true" size={16} strokeWidth={2.2} />
-                  GHCR
+                  Github Container Registry
                 </a>
                 <a className="launch-link dockerhub" href="https://hub.docker.com/r/gigateam/giga_agent">
                   <Box aria-hidden="true" size={16} strokeWidth={2.2} />
