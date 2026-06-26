@@ -3984,8 +3984,9 @@ section.hero .ga-window .ga-sidebar {
 
 section.hero .ga-window {
   grid-template-columns: 284px minmax(0, 1fr);
-  width: min(100%, 1216px);
-  margin: 0 auto;
+  width: 100%;
+  max-width: none;
+  margin: 0;
 }
 
 section.hero .ga-window .ga-chat,

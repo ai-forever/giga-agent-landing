@@ -73,7 +73,7 @@ export default function App() {
                 </a>
                 <a className="button tertiary" href="https://github.com/ai-forever/giga_agent">
                   <Github aria-hidden="true" size={18} strokeWidth={2.2} />
-                  Репозиторий
+                  Github
                 </a>
               </div>
             </div>
